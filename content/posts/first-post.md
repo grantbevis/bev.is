@@ -1,0 +1,18 @@
++++
+title = "First Post"
+date = "2022-12-08T20:06:51Z"
+author = ""
+authorTwitter = "" #do not include @
+cover = ""
+tags = []
+keywords = ["", ""]
+description = ""
+showFullContent = false
+readingTime = false
+hideComments = false
+color = "" #color from the theme settings
++++
+
+# Welcome to my blog
+
+Hello and welcome to my first blog post. I'm not 100% sure what I'm going to use this for but probably snippets of cool things I work out/do.
