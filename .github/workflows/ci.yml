@@ -17,34 +17,17 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [14]
 
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.5
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          node-version: ${{ matrix.node }}
-          check-latest: true
+          hugo-version: "0.105.0"
 
-      - name: Get yarn cache directory path 🛠
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache node_modules 📦
-        uses: actions/cache@v2.1.4
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies 👨🏻‍💻
-        run: yarn
-
-
-      - name: Run tests 🧪
-        run: yarn test
+      - name: Build
+        # remove --minify tag if you do not need it
+        # docs: https://gohugo.io/hugo-pipes/minification/
+        run: hugo --minify
